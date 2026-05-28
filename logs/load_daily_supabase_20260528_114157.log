@@ -1,0 +1,14 @@
+[2026-05-28 11:42:16] ============================================================
+[2026-05-28 11:42:16] DAILY RAW FILE LOAD STARTED
+[2026-05-28 11:42:16] Selected file: DSD Asset Management (1).xlsx
+[2026-05-28 11:42:17] upload_batch record created. upload_id = 4
+[2026-05-28 11:42:17] Reading Excel file: C:\Users\DESIGN~1\AppData\Local\Temp\tmp9mj_61aw\DSD Asset Management (1).xlsx
+[2026-05-28 11:42:18] Loaded 22801 rows from Excel.
+[2026-05-28 11:42:18] Columns found: ['Site ID', 'HW ID', 'Site', 'Inverter', 'Date', 'Has RSDs', 'IDC', 'IDC 1', 'IDC 2', 'IDC 3', 'IDC 4', 'IDC 5', 'IDC 6', 'VDC', 'VDC 1', 'VDC 2', 'VDC 3', 'VDC 4', 'VDC 5', 'VDC 6']
+[2026-05-28 11:42:19] Date range found: 2026-04-26 to 2026-05-13
+[2026-05-28 11:42:26] Inserted 22801 rows into raw_daily_staging.
+[2026-05-28 11:42:33] Inserted 22801 rows into raw_daily_history.
+[2026-05-28 11:42:33] upload_batch status updated to completed.
+[2026-05-28 11:42:33] File archived to: C:\Users\Design-Engineer\Downloads\supabase_solar_validation_project\archive\processed\DSD Asset Management (1).xlsx
+[2026-05-28 11:42:33] DAILY RAW FILE LOAD COMPLETE
+[2026-05-28 11:42:33] ============================================================

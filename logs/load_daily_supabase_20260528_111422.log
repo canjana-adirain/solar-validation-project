@@ -1,0 +1,17 @@
+[2026-05-28 11:14:22] File selected: Register_data_Raw.xlsx
+[2026-05-28 11:14:23] upload_batch record created — upload_id = 2
+[2026-05-28 11:14:23] Reading Excel file...
+[2026-05-28 11:14:24] Loaded 22801 rows from Excel.
+[2026-05-28 11:14:24] Columns found: ['Site ID', 'Site', 'HW ID', 'Inverter', 'Date', 'Has RSDs', 'IDC', 'IDC 1', 'IDC 2', 'IDC 3', 'IDC 4', 'IDC 5', 'IDC 6', 'VDC', 'VDC 1', 'VDC 2', 'VDC 3', 'VDC 4', 'VDC 5', 'VDC 6']
+[2026-05-28 11:14:31] Inserted 22801 rows into raw_daily_staging.
+[2026-05-28 11:14:37] Inserted 22801 rows into raw_daily_history.
+[2026-05-28 11:14:42] Inserted 22550 rows into validation_issues.
+[2026-05-28 11:15:36] Upserted 3420 good rows into daily_validated_data.
+[2026-05-28 11:15:36] File archived to: C:\Users\Design-Engineer\Downloads\supabase_solar_validation_project\archive\processed\Register_data_Raw.xlsx
+[2026-05-28 11:15:36] ============================================================
+[2026-05-28 11:15:36] DAILY FILE LOAD COMPLETE
+[2026-05-28 11:15:36] File: Register_data_Raw.xlsx
+[2026-05-28 11:15:36] Upload ID: 2
+[2026-05-28 11:15:36] Rows loaded: 22801. Raw history: 22801. Validated rows: 3420. Errors: 20710. Warnings: 1840.
+[2026-05-28 11:15:36] Log saved to: C:\Users\Design-Engineer\Downloads\supabase_solar_validation_project\logs\load_daily_supabase_20260528_111422.log
+[2026-05-28 11:15:36] ============================================================

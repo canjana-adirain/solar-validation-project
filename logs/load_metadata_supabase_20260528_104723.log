@@ -1,0 +1,13 @@
+[2026-05-28 10:47:23] Reading metadata file: C:\Users\Design-Engineer\Downloads\supabase_solar_validation_project\input\Meta_data.xlsx
+[2026-05-28 10:47:23] Loaded 1260 rows from 'Meta Data' sheet.
+[2026-05-28 10:47:23] Columns found: ['Projest Name', 'Projest Code', 'COD', 'Capacity (kWDC)', 'Capacity (kWAC)', 'Inverter', 'MPPT', 'String Per MPPT', 'Module /String', 'Total Module', 'Module capacity', 'DC Load (KW)', 'Tilt', 'Azimuth', 'MPPT Range', 'Module Manufacturer']
+[2026-05-28 10:47:23] --- Loading sites table ---
+[2026-05-28 10:47:23] Sites loaded/updated: 10
+[2026-05-28 10:47:23] Built site lookup with 10 sites.
+[2026-05-28 10:47:23] --- Loading metadata_rulebook table ---
+[2026-05-28 10:47:44] ============================================================
+[2026-05-28 10:47:44] METADATA LOAD COMPLETE
+[2026-05-28 10:47:44] Sites loaded/updated: 10
+[2026-05-28 10:47:44] Rulebook rows loaded/updated: 1260
+[2026-05-28 10:47:44] Log saved to: C:\Users\Design-Engineer\Downloads\supabase_solar_validation_project\logs\load_metadata_supabase_20260528_104723.log
+[2026-05-28 10:47:44] ============================================================

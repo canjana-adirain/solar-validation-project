@@ -1,0 +1,53 @@
+[2026-05-28 10:51:04] File selected: Register_data_Raw.xlsx
+[2026-05-28 10:51:05] upload_batch record created — upload_id = 1
+[2026-05-28 10:51:05] Reading Excel file...
+[2026-05-28 10:51:06] Loaded 22801 rows from Excel.
+[2026-05-28 10:51:06] Columns found: ['Site ID', 'Site', 'HW ID', 'Inverter', 'Date', 'Has RSDs', 'IDC', 'IDC 1', 'IDC 2', 'IDC 3', 'IDC 4', 'IDC 5', 'IDC 6', 'VDC', 'VDC 1', 'VDC 2', 'VDC 3', 'VDC 4', 'VDC 5', 'VDC 6']
+[2026-05-28 10:51:19] Inserted 22801 rows into raw_daily_staging.
+[2026-05-28 10:51:19] ERROR: (psycopg2.errors.AmbiguousColumn) column reference "upload_id" is ambiguous
+LINE 14:     ON CONFLICT (upload_id, row_no) DO NOTHING
+                         ^
+DETAIL:  It could refer to either a PL/pgSQL variable or a table column.
+QUERY:  INSERT INTO raw_daily_history (
+        upload_id, row_no, raw_site_id, site_name, hw_id, inverter_name,
+        reading_date, has_rsds,
+        idc_total, idc_1, idc_2, idc_3, idc_4, idc_5, idc_6,
+        vdc_avg, vdc_1, vdc_2, vdc_3, vdc_4, vdc_5, vdc_6
+    )
+    SELECT
+        s.upload_id, s.row_no, s.raw_site_id, s.site_name, s.hw_id, s.inverter_name,
+        s.reading_date, s.has_rsds,
+        s.idc_total, s.idc_1, s.idc_2, s.idc_3, s.idc_4, s.idc_5, s.idc_6,
+        s.vdc_avg, s.vdc_1, s.vdc_2, s.vdc_3, s.vdc_4, s.vdc_5, s.vdc_6
+    FROM raw_daily_staging s
+    WHERE s.upload_id = p_upload_id
+    ON CONFLICT (upload_id, row_no) DO NOTHING
+CONTEXT:  PL/pgSQL function process_daily_upload(bigint) line 18 at SQL statement
+
+[SQL: SELECT * FROM process_daily_upload(%(upload_id)s)]
+[parameters: {'upload_id': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+[2026-05-28 10:51:19] File moved to failed folder: C:\Users\Design-Engineer\Downloads\supabase_solar_validation_project\failed\failed_files\Register_data_Raw.xlsx
+[2026-05-28 10:51:19] FAILED: (psycopg2.errors.AmbiguousColumn) column reference "upload_id" is ambiguous
+LINE 14:     ON CONFLICT (upload_id, row_no) DO NOTHING
+                         ^
+DETAIL:  It could refer to either a PL/pgSQL variable or a table column.
+QUERY:  INSERT INTO raw_daily_history (
+        upload_id, row_no, raw_site_id, site_name, hw_id, inverter_name,
+        reading_date, has_rsds,
+        idc_total, idc_1, idc_2, idc_3, idc_4, idc_5, idc_6,
+        vdc_avg, vdc_1, vdc_2, vdc_3, vdc_4, vdc_5, vdc_6
+    )
+    SELECT
+        s.upload_id, s.row_no, s.raw_site_id, s.site_name, s.hw_id, s.inverter_name,
+        s.reading_date, s.has_rsds,
+        s.idc_total, s.idc_1, s.idc_2, s.idc_3, s.idc_4, s.idc_5, s.idc_6,
+        s.vdc_avg, s.vdc_1, s.vdc_2, s.vdc_3, s.vdc_4, s.vdc_5, s.vdc_6
+    FROM raw_daily_staging s
+    WHERE s.upload_id = p_upload_id
+    ON CONFLICT (upload_id, row_no) DO NOTHING
+CONTEXT:  PL/pgSQL function process_daily_upload(bigint) line 18 at SQL statement
+
+[SQL: SELECT * FROM process_daily_upload(%(upload_id)s)]
+[parameters: {'upload_id': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
