@@ -1,0 +1,16 @@
+[2026-05-29 12:13:41] ============================================================
+[2026-05-29 12:13:41] DAILY RAW FILE LOAD STARTED
+[2026-05-29 12:13:41] Selected file: test.xlsx
+[2026-05-29 12:13:41] upload_batch record created. upload_id = 1
+[2026-05-29 12:13:41] Reading Excel file: C:\Users\Design-Engineer\Downloads\supabase_solar_validation_project\input\daily_raw_files\test.xlsx
+[2026-05-29 12:13:42] Loaded 8601 rows from Excel.
+[2026-05-29 12:13:42] Columns found: ['Site ID', 'Site', 'HW ID', 'Inverter', 'Date', 'Has RSDs', 'IDC', 'IDC 1', 'IDC 2', 'IDC 3', 'IDC 4', 'IDC 5', 'IDC 6', 'VDC', 'VDC 1', 'VDC 2', 'VDC 3', 'VDC 4', 'VDC 5', 'VDC 6']
+[2026-05-29 12:13:42] Date range found: 2026-05-19 to 2026-05-20
+[2026-05-29 12:13:44] Inserted 8601 rows into raw_daily_staging.
+[2026-05-29 12:13:47] Inserted 8601 rows into raw_daily_history.
+[2026-05-29 12:13:49] ERROR: division by zero
+[2026-05-29 12:13:49] upload_batch status updated to failed.
+[2026-05-29 12:13:49] File moved to failed folder: C:\Users\Design-Engineer\Downloads\supabase_solar_validation_project\failed\failed_files\test_20260529_121349.xlsx
+[2026-05-29 12:13:49] DAILY RAW FILE LOAD FAILED
+[2026-05-29 12:13:49] ============================================================
+[2026-05-29 12:13:50] Script failed: division by zero

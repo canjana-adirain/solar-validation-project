@@ -1,0 +1,18 @@
+[2026-05-29 13:38:48] ============================================================
+[2026-05-29 13:38:48] DAILY RAW FILE LOAD STARTED
+[2026-05-29 13:38:48] Selected file: DSD Asset Management.xlsx
+[2026-05-29 13:38:49] upload_batch record created. upload_id = 4
+[2026-05-29 13:38:49] Reading Excel file: C:\Users\Design-Engineer\Downloads\supabase_solar_validation_project\input\daily_raw_files\DSD Asset Management.xlsx
+[2026-05-29 13:38:49] Loaded 4297 rows from Excel.
+[2026-05-29 13:38:49] Columns found: ['Site ID', 'Site', 'HW ID', 'Inverter', 'Date', 'Has RSDs', 'IDC', 'IDC 1', 'IDC 2', 'IDC 3', 'IDC 4', 'IDC 5', 'IDC 6', 'VDC', 'VDC 1', 'VDC 2', 'VDC 3', 'VDC 4', 'VDC 5', 'VDC 6']
+[2026-05-29 13:38:49] Date range found: 2026-05-26 to 2026-05-26
+[2026-05-29 13:38:50] Inserted 4297 rows into raw_daily_staging.
+[2026-05-29 13:38:52] Inserted 4297 rows into raw_daily_history.
+[2026-05-29 13:38:53] ERROR: Invalid value '[0.0 0.0 0.0 ... -0.05496152693114437 -30.173878285200363
+ -0.05496152693114437]' for dtype 'float64'
+[2026-05-29 13:38:54] upload_batch status updated to failed.
+[2026-05-29 13:38:54] File moved to failed folder: C:\Users\Design-Engineer\Downloads\supabase_solar_validation_project\failed\failed_files\DSD Asset Management_20260529_133854.xlsx
+[2026-05-29 13:38:54] DAILY RAW FILE LOAD FAILED
+[2026-05-29 13:38:54] ============================================================
+[2026-05-29 13:38:54] Script failed: Invalid value '[0.0 0.0 0.0 ... -0.05496152693114437 -30.173878285200363
+ -0.05496152693114437]' for dtype 'float64'

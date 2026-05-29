@@ -1,0 +1,16 @@
+[2026-05-29 12:25:44] ============================================================
+[2026-05-29 12:25:44] DAILY RAW FILE LOAD STARTED
+[2026-05-29 12:25:44] Selected file: test.xlsx
+[2026-05-29 12:25:44] upload_batch record created. upload_id = 2
+[2026-05-29 12:25:44] Reading Excel file: C:\Users\Design-Engineer\Downloads\supabase_solar_validation_project\input\daily_raw_files\test.xlsx
+[2026-05-29 12:25:45] Loaded 8601 rows from Excel.
+[2026-05-29 12:25:45] Columns found: ['Site ID', 'Site', 'HW ID', 'Inverter', 'Date', 'Has RSDs', 'IDC', 'IDC 1', 'IDC 2', 'IDC 3', 'IDC 4', 'IDC 5', 'IDC 6', 'VDC', 'VDC 1', 'VDC 2', 'VDC 3', 'VDC 4', 'VDC 5', 'VDC 6']
+[2026-05-29 12:25:45] Date range found: 2026-05-19 to 2026-05-20
+[2026-05-29 12:25:50] Inserted 8601 rows into raw_daily_staging.
+[2026-05-29 12:25:54] Inserted 8601 rows into raw_daily_history.
+[2026-05-29 12:25:57] ERROR: Invalid value '[0.0 0.0 0.0 ... 0.0 -41.860523225306714 -0.06246720471751975]' for dtype 'float64'
+[2026-05-29 12:25:57] upload_batch status updated to failed.
+[2026-05-29 12:25:57] File moved to failed folder: C:\Users\Design-Engineer\Downloads\supabase_solar_validation_project\failed\failed_files\test_20260529_122557.xlsx
+[2026-05-29 12:25:57] DAILY RAW FILE LOAD FAILED
+[2026-05-29 12:25:57] ============================================================
+[2026-05-29 12:25:57] Script failed: Invalid value '[0.0 0.0 0.0 ... 0.0 -41.860523225306714 -0.06246720471751975]' for dtype 'float64'

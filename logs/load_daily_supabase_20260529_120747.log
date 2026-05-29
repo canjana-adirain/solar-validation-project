@@ -1,0 +1,26 @@
+[2026-05-29 12:07:47] ============================================================
+[2026-05-29 12:07:47] DAILY RAW FILE LOAD STARTED
+[2026-05-29 12:07:47] Selected file: test.xlsx
+[2026-05-29 12:07:48] ERROR: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "upload_batch_pkey"
+DETAIL:  Key (upload_id)=(1) already exists.
+
+[SQL: 
+                INSERT INTO upload_batch (file_name, file_type, uploaded_by, status)
+                VALUES (%(file_name)s, 'daily_raw', 'automation', 'loading')
+                RETURNING upload_id
+                ]
+[parameters: {'file_name': 'test.xlsx'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+[2026-05-29 12:07:48] File moved to failed folder: C:\Users\Design-Engineer\Downloads\supabase_solar_validation_project\failed\failed_files\test.xlsx
+[2026-05-29 12:07:48] DAILY RAW FILE LOAD FAILED
+[2026-05-29 12:07:48] ============================================================
+[2026-05-29 12:07:48] Script failed: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "upload_batch_pkey"
+DETAIL:  Key (upload_id)=(1) already exists.
+
+[SQL: 
+                INSERT INTO upload_batch (file_name, file_type, uploaded_by, status)
+                VALUES (%(file_name)s, 'daily_raw', 'automation', 'loading')
+                RETURNING upload_id
+                ]
+[parameters: {'file_name': 'test.xlsx'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)

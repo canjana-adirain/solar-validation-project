@@ -1,0 +1,20 @@
+[2026-05-29 15:08:10] ============================================================
+[2026-05-29 15:08:10] DAILY RAW FILE LOAD STARTED
+[2026-05-29 15:08:10] File       : DSD Asset Management.xlsx
+[2026-05-29 15:08:10] Uploaded by: automation
+[2026-05-29 15:08:10] upload_batch created — upload_id = 1
+[2026-05-29 15:08:10] Reading: DSD Asset Management.xlsx
+[2026-05-29 15:08:11] Loaded 4297 rows.
+[2026-05-29 15:08:11] Date range  : 2026-05-26 → 2026-05-26
+[2026-05-29 15:08:11] Unique sites: 436 | Unique dates: 1
+[2026-05-29 15:08:11] Removing existing rows for 1 date(s) and 436 site(s)...
+[2026-05-29 15:08:11] Deleted 0 from staging, 0 from history, 0 from string monitoring.
+[2026-05-29 15:08:12] Inserted 4297 rows → raw_daily_staging.
+[2026-05-29 15:08:14] Inserted 4297 rows → raw_daily_history.
+[2026-05-29 15:08:14] Building string monitoring data...
+[2026-05-29 15:08:14] String monitoring built — 28670 rows.
+[2026-05-29 15:08:20] Inserted 28670 rows → daily_string_monitoring.
+[2026-05-29 15:08:21] upload_batch → completed.
+[2026-05-29 15:08:21] Archived → C:\Users\Design-Engineer\Downloads\supabase_solar_validation_project\archive\processed\DSD Asset Management.xlsx
+[2026-05-29 15:08:21] DAILY RAW FILE LOAD COMPLETE
+[2026-05-29 15:08:21] ============================================================
