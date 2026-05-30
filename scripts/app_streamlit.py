@@ -275,7 +275,7 @@ elif page == "📊 Upload Status":
                 if val == "failed":    return "background-color:#f8d7da;color:#721c24"
                 if val == "loading":   return "background-color:#fff3cd;color:#856404"
                 return ""
-            st.dataframe(df.style.applymap(colour_status, subset=["Status"]), use_container_width=True)
+            st.dataframe(df.style.apply(colour_status, subset=["Status"]), use_container_width=True)
             c1,c2,c3 = st.columns(3)
             c1.metric("Total",     len(df))
             c2.metric("✅ Completed", len(df[df["Status"]=="completed"]))
@@ -347,7 +347,7 @@ elif page == "🔍 String Monitoring":
                 if val == True:  return "background-color:#f8d7da;color:#721c24"
                 if val == False: return "background-color:#d4edda;color:#155724"
                 return ""
-            st.dataframe(df.style.applymap(colour_anomaly, subset=["Anomaly?"]), use_container_width=True)
+            st.dataframe(df.style.apply(colour_anomaly, subset=["Anomaly?"]), use_container_width=True)
 
     except Exception as exc:
         st.error(f"Could not load string monitoring data: {exc}")
