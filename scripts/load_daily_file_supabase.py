@@ -365,6 +365,12 @@ Usage:
     python scripts/load_daily_file_supabase.py
     python scripts/load_daily_file_supabase.py --file "Register data_Raw.xlsx"
     python scripts/load_daily_file_supabase.py --uploaded-by "Shivam"
+    
+    let me know if my understanding of how everything is working is correct or not
+    1. we ccreated the database on supabase that means that it is already hosted on the cloud and we can access it from anywhere
+    2. Now we created the scripts in python to load the data into the database and we are using sqlalchemy to connect to the database and perform the operations. Supabse gives use the connection string that we add in .env that connects the python to database
+    3. we have added the program to the github repo and created the frontend interface on streamlit to upload the file and trigger the load_daily_file function that will load the data into the database
+    4. so we have to put our python scripts somehere or dors it require my system to work 24/7 or nothing of this sought is neededa as code is preset on the github and streamlit trigger that code and upload the data to database and run checks?
 """
 from __future__ import annotations
 

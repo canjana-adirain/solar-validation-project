@@ -192,7 +192,7 @@ if page == "📤 Upload Daily File":
     )
     st.markdown("---")
 
-    uploaded_by   = st.text_input("Your name *", placeholder="e.g. Shivam, Priya...")
+    uploaded_by   = st.text_input("Your name *", placeholder="e.g. xyz..")
     uploaded_file = st.file_uploader("Choose daily raw Excel file (.xlsx)", type=["xlsx","xls"])
 
     if uploaded_file:
@@ -221,7 +221,7 @@ elif page == "📋 Upload Metadata":
     st.warning("⚠️ Use carefully — metadata is the rulebook used for validation. Uploading updates existing site and inverter records.")
     st.markdown("---")
 
-    uploaded_by   = st.text_input("Your name *", placeholder="e.g. Shivam, Priya...")
+    uploaded_by   = st.text_input("Your name *", placeholder="e.g. xyz...")
     uploaded_file = st.file_uploader("Choose metadata Excel file (.xlsx)", type=["xlsx","xls"])
 
     if uploaded_file:
