@@ -1,0 +1,13 @@
+[2026-06-01 16:51:11] ============================================================
+[2026-06-01 16:51:11] VALIDATION STARTED
+[2026-06-01 16:51:11] Reading from raw_daily_staging (standalone mode)...
+[2026-06-01 16:51:12] Loaded 4297 rows from raw_daily_staging.
+[2026-06-01 16:51:12] Loaded 10 sites from sites table.
+[2026-06-01 16:51:13] Inserted 4082 SITE_NOT_FOUND issues → validation_issues.
+[2026-06-01 16:51:13] CHECK 1 — Site exists: 215 passed, 4082 failed.
+[2026-06-01 16:51:13] ------------------------------------------------------------
+[2026-06-01 16:51:13] Total rows       : 4297
+[2026-06-01 16:51:13] Passed all checks: 215
+[2026-06-01 16:51:13] Failed CHECK 1   : 4082
+[2026-06-01 16:51:13] VALIDATION COMPLETE
+[2026-06-01 16:51:13] ============================================================

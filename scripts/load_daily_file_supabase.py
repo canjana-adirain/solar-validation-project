@@ -748,6 +748,15 @@ def load_daily_file(file_path: Path, uploaded_by: str = "team_user") -> int:
         # Step 5 — Insert into history
         insert_dataframe(daily_df, "raw_daily_history")
         log(f"Inserted {len(daily_df)} rows → raw_daily_history.")
+        
+#         If you ever wanted it to read from raw_daily_staging instead (e.g. for a re-processing scenario), you'd replace the daily_df argument with a DB query like:
+# with engine.connect() as conn:
+#     daily_df = pd.read_sql(
+#         text("SELECT * FROM raw_daily_staging WHERE upload_id = :uid"),
+#         conn,
+#         params={"uid": upload_id}
+#     )
+# monitoring_df = build_string_monitoring(daily_df, upload_id)
 
         # Step 6 — String monitoring
         monitoring_df = build_string_monitoring(daily_df, upload_id)
