@@ -366,6 +366,9 @@ Usage:
     python scripts/load_daily_file_supabase.py --file "Register data_Raw.xlsx"
     python scripts/load_daily_file_supabase.py --uploaded-by "Shivam"
     
+    what are this python files doing and how are we communictiong with database.. how do we write the validation logic in python using the database explain with example on how to read the database for validationc chek and how to update the database tables
+    
+    
     let me know if my understanding of how everything is working is correct or not
     1. we ccreated the database on supabase that means that it is already hosted on the cloud and we can access it from anywhere
     2. Now we created the scripts in python to load the data into the database and we are using sqlalchemy to connect to the database and perform the operations. Supabse gives use the connection string that we add in .env that connects the python to database
