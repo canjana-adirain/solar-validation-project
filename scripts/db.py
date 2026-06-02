@@ -12,6 +12,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
 
+# So Python already knows where the file lives, and it stores that path in __file__. We can use that to find the project root and load the .env file from there.
+# so the base directory is  "C:\Users\Design-Engineer\Downloads\supabase_solar_validation_project"
 BASE_DIR = Path(__file__).resolve().parents[1]
 load_dotenv(BASE_DIR / ".env")
 

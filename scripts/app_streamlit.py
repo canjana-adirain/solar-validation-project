@@ -1,15 +1,3 @@
-# """
-# app_streamlit.py
-# ----------------
-# Simple team-facing upload app for Supabase version.
-
-# Run locally:
-#     streamlit run scripts/app_streamlit.py
-
-# Deploy later on Streamlit Community Cloud, Render, Azure App Service, or company-approved hosting.
-# For production, replace APP_PASSWORD with Supabase Auth or company SSO.
-# """
-
 # from __future__ import annotations
 
 # import os
@@ -28,132 +16,10 @@
 # load_dotenv(BASE_DIR / ".env")
 # APP_PASSWORD = os.getenv("APP_PASSWORD")
 
-# st.set_page_config(page_title="Solar Validation System", layout="wide")
-# st.title("Solar Validation System")
 
-# if APP_PASSWORD:
-#     entered = st.sidebar.text_input("App password", type="password")
-#     if entered != APP_PASSWORD:
-#         st.info("Enter the app password to continue.")
-#         st.stop()
-
-# page = st.sidebar.radio(
-#     "Menu",
-#     ["Upload Daily File", "Upload Metadata", "Upload Status", "Validation Issues", "Validated Data Preview"],
-# )
-
-
-# def save_upload(uploaded_file) -> Path:
-#     suffix = Path(uploaded_file.name).suffix
-#     temp_dir = Path(tempfile.mkdtemp())
-#     temp_path = temp_dir / uploaded_file.name
-#     temp_path.write_bytes(uploaded_file.getbuffer())
-#     return temp_path
-
-
-# if page == "Upload Daily File":
-#     st.header("Upload Daily Raw Excel File")
-#     uploaded_file = st.file_uploader("Choose daily raw Excel file", type=["xlsx", "xls"])
-#     uploaded_by = st.text_input("Uploaded by", value="team_user")
-
-#     if uploaded_file and st.button("Upload and Validate"):
-#         temp_path = save_upload(uploaded_file)
-#         with st.spinner("Processing daily file..."):
-#             try:
-#                 upload_id = load_daily_file(temp_path)
-#                 st.success(f"Daily file processed. Upload ID: {upload_id}")
-#             except Exception as exc:
-#                 st.error(f"Processing failed: {exc}")
-
-# elif page == "Upload Metadata":
-#     st.header("Upload Metadata Excel File")
-#     st.warning("Use this carefully. Metadata is the rulebook used for validation.")
-#     uploaded_file = st.file_uploader("Choose metadata Excel file", type=["xlsx", "xls"])
-
-#     if uploaded_file and st.button("Load Metadata"):
-#         temp_path = save_upload(uploaded_file)
-#         with st.spinner("Loading metadata..."):
-#             try:
-#                 load_metadata(temp_path)
-#                 st.success("Metadata loaded/updated successfully.")
-#             except Exception as exc:
-#                 st.error(f"Metadata load failed: {exc}")
-
-# elif page == "Upload Status":
-#     st.header("Upload Status")
-#     with engine.connect() as conn:
-#         rows = conn.execute(text("""
-#             SELECT upload_id, file_name, file_type, uploaded_by, loaded_at, status, remarks
-#             FROM upload_batch
-#             ORDER BY upload_id DESC
-#             LIMIT 100
-#         """)).mappings().all()
-#     st.dataframe(pd.DataFrame(rows), use_container_width=True)
-
-# elif page == "Validation Issues":
-#     st.header("Validation Issues")
-#     with engine.connect() as conn:
-#         rows = conn.execute(text("""
-#             SELECT issue_id, upload_id, row_no, site_name, hw_id, inverter_name,
-#                    reading_date, mppt_no, issue_type, severity, issue_message, created_at
-#             FROM validation_issues
-#             ORDER BY issue_id DESC
-#             LIMIT 500
-#         """)).mappings().all()
-#     st.dataframe(pd.DataFrame(rows), use_container_width=True)
-
-# elif page == "Validated Data Preview":
-#     st.header("Validated Data Preview")
-#     with engine.connect() as conn:
-#         rows = conn.execute(text("""
-#             SELECT validated_id, site_name, hw_id, inverter_name, reading_date,
-#                    idc_total, vdc_avg, source_upload_id, updated_at
-#             FROM daily_validated_data
-#             ORDER BY reading_date DESC, validated_id DESC
-#             LIMIT 500
-#         """)).mappings().all()
-#     st.dataframe(pd.DataFrame(rows), use_container_width=True)
-
-
-# """
-# app_streamlit.py
-# ----------------
-# Team-facing Solar Validation System frontend.
-
-# FEATURES:
-#   - Upload Daily File (with uploader name + duplicate-safe)
-#   - Upload Metadata (from frontend, with uploader name)
-#   - Upload Status (shows who uploaded, colour-coded status)
-#   - String Monitoring (per-string anomaly view)
-#   - Validation Issues
-#   - Validated Data Preview
-# """
-# from __future__ import annotations
-
-# import os
-# import tempfile
-# from pathlib import Path
-
-# import pandas as pd
-# import streamlit as st
-# from dotenv import load_dotenv
-# from sqlalchemy import text
-
-# from db import BASE_DIR, engine
-# from load_metadata_supabase import load_metadata
-# from load_daily_file_supabase import load_daily_file
-
-# load_dotenv(BASE_DIR / ".env")
-# APP_PASSWORD = os.getenv("APP_PASSWORD")
-
-# # ─────────────────────────────────────────────
-# # PAGE CONFIG
-# # ─────────────────────────────────────────────
 # st.set_page_config(page_title="Solar Validation System", page_icon="☀️", layout="wide")
 
-# # ─────────────────────────────────────────────
-# # PASSWORD
-# # ─────────────────────────────────────────────
+
 # if APP_PASSWORD:
 #     entered = st.sidebar.text_input("App password", type="password")
 #     if entered != APP_PASSWORD:
@@ -161,9 +27,6 @@
 #         st.info("Enter the app password in the sidebar to continue.")
 #         st.stop()
 
-# # ─────────────────────────────────────────────
-# # NAVIGATION
-# # ─────────────────────────────────────────────
 # st.sidebar.title("☀️ Solar Validation")
 # st.sidebar.markdown("---")
 # page = st.sidebar.radio("Navigation", [
@@ -174,16 +37,13 @@
 #     "⚠️ Validation Issues",
 #     "✅ Validated Data Preview",
 # ])
-
+# # It creates a new temporary folder (temp_dir),then saves the uploaded file inside that folder, and finally returns the full path of that saved file.
 # def save_upload(uploaded_file) -> Path:
 #     temp_dir  = Path(tempfile.mkdtemp())
 #     temp_path = temp_dir / uploaded_file.name
 #     temp_path.write_bytes(uploaded_file.getbuffer())
 #     return temp_path
 
-# # ─────────────────────────────────────────────
-# # PAGE 1 — UPLOAD DAILY FILE
-# # ─────────────────────────────────────────────
 # if page == "📤 Upload Daily File":
 #     st.title("📤 Upload Daily Raw Excel File")
 #     st.markdown(
@@ -234,12 +94,31 @@
 #             st.warning("Please enter your name.")
 #         else:
 #             temp_path = save_upload(uploaded_file)
-#             with st.spinner("Loading metadata into database..."):
+#             status_box = st.empty()
+#             log_box    = st.empty()
+#             log_lines: list[str] = []
+
+#             def update_progress(msg: str):
+#                 log_lines.append(msg)
+#                 log_box.code("\n".join(log_lines[-12:]))  # show last 12 lines
+
+#             with st.spinner("Loading metadata — this may take 30–60 seconds for large files..."):
 #                 try:
-#                     load_metadata(temp_path)
-#                     st.success("✅ Metadata loaded/updated successfully!")
-#                     st.info("Sites and rulebook tables have been updated.")
+#                     result = load_metadata(
+#                         temp_path,
+#                         uploaded_by=uploaded_by.strip(),
+#                         progress_fn=update_progress,
+#                     )
+#                     log_box.empty()
+#                     st.success(
+#                         f"✅ Metadata loaded successfully!  "
+#                         f"**{result['sites_count']}** sites · "
+#                         f"**{result['rulebook_count']}** rulebook rows · "
+#                         f"Upload ID: **{result['upload_id']}**"
+#                     )
+#                     st.info("Check **Upload Status** to confirm the upload record."  )
 #                 except Exception as exc:
+#                     log_box.empty()
 #                     st.error(f"❌ Metadata load failed: {exc}")
 
 # # ─────────────────────────────────────────────
@@ -406,136 +285,6 @@
 #         st.error(f"Could not load validated data: {exc}")
 
 
-# """
-# app_streamlit.py
-# ----------------
-# Simple team-facing upload app for Supabase version.
-
-# Run locally:
-#     streamlit run scripts/app_streamlit.py
-
-# Deploy later on Streamlit Community Cloud, Render, Azure App Service, or company-approved hosting.
-# For production, replace APP_PASSWORD with Supabase Auth or company SSO.
-# """
-
-# from __future__ import annotations
-
-# import os
-# import tempfile
-# from pathlib import Path
-
-# import pandas as pd
-# import streamlit as st
-# from dotenv import load_dotenv
-# from sqlalchemy import text
-
-# from db import BASE_DIR, engine
-# from load_metadata_supabase import load_metadata
-# from load_daily_file_supabase import load_daily_file
-
-# load_dotenv(BASE_DIR / ".env")
-# APP_PASSWORD = os.getenv("APP_PASSWORD")
-
-# st.set_page_config(page_title="Solar Validation System", layout="wide")
-# st.title("Solar Validation System")
-
-# if APP_PASSWORD:
-#     entered = st.sidebar.text_input("App password", type="password")
-#     if entered != APP_PASSWORD:
-#         st.info("Enter the app password to continue.")
-#         st.stop()
-
-# page = st.sidebar.radio(
-#     "Menu",
-#     ["Upload Daily File", "Upload Metadata", "Upload Status", "Validation Issues", "Validated Data Preview"],
-# )
-
-
-# def save_upload(uploaded_file) -> Path:
-#     suffix = Path(uploaded_file.name).suffix
-#     temp_dir = Path(tempfile.mkdtemp())
-#     temp_path = temp_dir / uploaded_file.name
-#     temp_path.write_bytes(uploaded_file.getbuffer())
-#     return temp_path
-
-
-# if page == "Upload Daily File":
-#     st.header("Upload Daily Raw Excel File")
-#     uploaded_file = st.file_uploader("Choose daily raw Excel file", type=["xlsx", "xls"])
-#     uploaded_by = st.text_input("Uploaded by", value="team_user")
-
-#     if uploaded_file and st.button("Upload and Validate"):
-#         temp_path = save_upload(uploaded_file)
-#         with st.spinner("Processing daily file..."):
-#             try:
-#                 upload_id = load_daily_file(temp_path)
-#                 st.success(f"Daily file processed. Upload ID: {upload_id}")
-#             except Exception as exc:
-#                 st.error(f"Processing failed: {exc}")
-
-# elif page == "Upload Metadata":
-#     st.header("Upload Metadata Excel File")
-#     st.warning("Use this carefully. Metadata is the rulebook used for validation.")
-#     uploaded_file = st.file_uploader("Choose metadata Excel file", type=["xlsx", "xls"])
-
-#     if uploaded_file and st.button("Load Metadata"):
-#         temp_path = save_upload(uploaded_file)
-#         with st.spinner("Loading metadata..."):
-#             try:
-#                 load_metadata(temp_path)
-#                 st.success("Metadata loaded/updated successfully.")
-#             except Exception as exc:
-#                 st.error(f"Metadata load failed: {exc}")
-
-# elif page == "Upload Status":
-#     st.header("Upload Status")
-#     with engine.connect() as conn:
-#         rows = conn.execute(text("""
-#             SELECT upload_id, file_name, file_type, uploaded_by, loaded_at, status, remarks
-#             FROM upload_batch
-#             ORDER BY upload_id DESC
-#             LIMIT 100
-#         """)).mappings().all()
-#     st.dataframe(pd.DataFrame(rows), use_container_width=True)
-
-# elif page == "Validation Issues":
-#     st.header("Validation Issues")
-#     with engine.connect() as conn:
-#         rows = conn.execute(text("""
-#             SELECT issue_id, upload_id, row_no, site_name, hw_id, inverter_name,
-#                    reading_date, mppt_no, issue_type, severity, issue_message, created_at
-#             FROM validation_issues
-#             ORDER BY issue_id DESC
-#             LIMIT 500
-#         """)).mappings().all()
-#     st.dataframe(pd.DataFrame(rows), use_container_width=True)
-
-# elif page == "Validated Data Preview":
-#     st.header("Validated Data Preview")
-#     with engine.connect() as conn:
-#         rows = conn.execute(text("""
-#             SELECT validated_id, site_name, hw_id, inverter_name, reading_date,
-#                    idc_total, vdc_avg, source_upload_id, updated_at
-#             FROM daily_validated_data
-#             ORDER BY reading_date DESC, validated_id DESC
-#             LIMIT 500
-#         """)).mappings().all()
-#     st.dataframe(pd.DataFrame(rows), use_container_width=True)
-
-
-"""
-app_streamlit.py
-----------------
-Team-facing Solar Validation System frontend.
-
-FEATURES:
-  - Upload Daily File (with uploader name + duplicate-safe)
-  - Upload Metadata (from frontend, with uploader name)
-  - Upload Status (shows who uploaded, colour-coded status)
-  - String Monitoring (per-string anomaly view)
-  - Validation Issues
-  - Validated Data Preview
-"""
 from __future__ import annotations
 
 import os
@@ -554,14 +303,10 @@ from load_daily_file_supabase import load_daily_file
 load_dotenv(BASE_DIR / ".env")
 APP_PASSWORD = os.getenv("APP_PASSWORD")
 
-# ─────────────────────────────────────────────
-# PAGE CONFIG
-# ─────────────────────────────────────────────
+
 st.set_page_config(page_title="Solar Validation System", page_icon="☀️", layout="wide")
 
-# ─────────────────────────────────────────────
-# PASSWORD
-# ─────────────────────────────────────────────
+
 if APP_PASSWORD:
     entered = st.sidebar.text_input("App password", type="password")
     if entered != APP_PASSWORD:
@@ -569,9 +314,6 @@ if APP_PASSWORD:
         st.info("Enter the app password in the sidebar to continue.")
         st.stop()
 
-# ─────────────────────────────────────────────
-# NAVIGATION
-# ─────────────────────────────────────────────
 st.sidebar.title("☀️ Solar Validation")
 st.sidebar.markdown("---")
 page = st.sidebar.radio("Navigation", [
@@ -582,16 +324,13 @@ page = st.sidebar.radio("Navigation", [
     "⚠️ Validation Issues",
     "✅ Validated Data Preview",
 ])
-
+# It creates a new temporary folder (temp_dir),then saves the uploaded file inside that folder, and finally returns the full path of that saved file.
 def save_upload(uploaded_file) -> Path:
     temp_dir  = Path(tempfile.mkdtemp())
     temp_path = temp_dir / uploaded_file.name
     temp_path.write_bytes(uploaded_file.getbuffer())
     return temp_path
 
-# ─────────────────────────────────────────────
-# PAGE 1 — UPLOAD DAILY FILE
-# ─────────────────────────────────────────────
 if page == "📤 Upload Daily File":
     st.title("📤 Upload Daily Raw Excel File")
     st.markdown(
@@ -617,7 +356,7 @@ if page == "📤 Upload Daily File":
                 try:
                     upload_id = load_daily_file(temp_path, uploaded_by=uploaded_by.strip())
                     st.success(f"✅ File processed! Upload ID: **{upload_id}**")
-                    st.info("Check **Upload Status** to confirm. Check **String Monitoring** to see per-string analysis.")
+                    st.info("Validation ran automatically — check **⚠️ Validation Issues** for any errors found.")
                 except Exception as exc:
                     st.error(f"❌ Processing failed: {exc}")
 
@@ -784,7 +523,7 @@ elif page == "🔍 String Monitoring":
 # ─────────────────────────────────────────────
 elif page == "⚠️ Validation Issues":
     st.title("⚠️ Validation Issues")
-    st.markdown("Validation errors and warnings found during data checks.")
+    st.markdown("Validation errors and warnings written automatically after every upload.")
     st.markdown("---")
     try:
         with engine.connect() as conn:
@@ -794,16 +533,56 @@ elif page == "⚠️ Validation Issues":
                        severity, issue_message, created_at
                 FROM validation_issues
                 ORDER BY issue_id DESC
-                LIMIT 500
+                LIMIT 2000
             """)).mappings().all()
+
         df = pd.DataFrame(rows)
+
         if df.empty:
-            st.success("No validation issues found.")
+            st.success("✅ No validation issues found.")
         else:
-            c1,c2 = st.columns(2)
-            c1.metric("Total Issues", len(df))
-            c2.metric("Errors",       len(df[df["severity"]=="error"]))
-            st.dataframe(df, use_container_width=True)
+            # ── Filters ──────────────────────────────────────────────
+            col_f1, col_f2, col_f3 = st.columns(3)
+
+            upload_ids = ["All"] + sorted(df["upload_id"].dropna().unique().astype(str).tolist(), reverse=True)
+            sel_upload = col_f1.selectbox("Filter by Upload ID", upload_ids)
+
+            severities = ["All"] + sorted(df["severity"].dropna().unique().tolist())
+            sel_severity = col_f2.selectbox("Filter by Severity", severities)
+
+            issue_types = ["All"] + sorted(df["issue_type"].dropna().unique().tolist())
+            sel_issue = col_f3.selectbox("Filter by Issue Type", issue_types)
+
+            filtered = df.copy()
+            if sel_upload   != "All": filtered = filtered[filtered["upload_id"].astype(str) == sel_upload]
+            if sel_severity != "All": filtered = filtered[filtered["severity"] == sel_severity]
+            if sel_issue    != "All": filtered = filtered[filtered["issue_type"] == sel_issue]
+
+            # ── Metrics ──────────────────────────────────────────────
+            c1, c2, c3, c4 = st.columns(4)
+            c1.metric("Total Issues",    len(filtered))
+            c2.metric("🔴 Errors",       len(filtered[filtered["severity"] == "error"]))
+            c3.metric("🟡 Warnings",     len(filtered[filtered["severity"] == "warning"]))
+            c4.metric("Issue Types",     filtered["issue_type"].nunique())
+
+            # ── Colour by severity ────────────────────────────────────
+            def colour_severity(val):
+                if val == "error":   return "background-color:#f8d7da;color:#721c24"
+                if val == "warning": return "background-color:#fff3cd;color:#856404"
+                return ""
+
+            styled = filtered.style.applymap(colour_severity, subset=["severity"])
+            st.dataframe(styled, use_container_width=True)
+
+            # ── CSV download ──────────────────────────────────────────
+            csv = filtered.to_csv(index=False).encode("utf-8")
+            st.download_button(
+                label="⬇️ Download as CSV",
+                data=csv,
+                file_name=f"validation_issues_upload{sel_upload}.csv",
+                mime="text/csv",
+            )
+
     except Exception as exc:
         st.error(f"Could not load validation issues: {exc}")
 
