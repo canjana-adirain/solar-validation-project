@@ -571,7 +571,7 @@ elif page == "⚠️ Validation Issues":
                 if val == "warning": return "background-color:#fff3cd;color:#856404"
                 return ""
 
-            styled = filtered.style.applymap(colour_severity, subset=["severity"])
+            styled = filtered.style.map(colour_severity, subset=["severity"])
             st.dataframe(styled, use_container_width=True)
 
             # ── CSV download ──────────────────────────────────────────
