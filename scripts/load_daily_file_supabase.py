@@ -706,13 +706,13 @@ def build_string_monitoring(df: pd.DataFrame, upload_id: int) -> pd.DataFrame:
         (result["measurement_type"] == "Current") & (result["deviation_percent"] <= -30),
     ]
     choices = [
-        "Ignore",
+        "No Anomaly",
         "Producing Less",
         "1 String Down or No Anomaly",
         "1 String Down and 1 String Producing Less",
         "2 Strings Down or No Anomaly",
     ]
-    result["current_category"] = np.select(conditions, choices, default="N/A")
+    result["current_category"] = np.select(conditions, choices, default="out of scope")
 
     # ── Final column selection ──
     final_cols = [
